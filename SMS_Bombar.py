@@ -354,7 +354,7 @@ def create_app(db_path, bind_host="127.0.0.1", per_target_rate=60, simulate_dela
             status = 'queued'
             logger.info('Message queued id=%s to=%s delay=%s', mid, to_number, delay)
         else:
-            cur.execute("UPDATE messages SET status=? WHERE id=??", ('delivered', mid))
+            cur.execute("UPDATE messages SET status=? WHERE id=?", ('delivered', mid))
             conn.commit()
             status = 'delivered'
             logger.info('Message delivered id=%s to=%s', mid, to_number)
